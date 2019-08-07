@@ -1,16 +1,54 @@
 @import "_normalize";
 @import "_variables";
 
-
-html {
-  box-sizing: border-box;
+@keyframes outer{
+  from { width: 100%; }
+  to { width: 0;}
 }
 
-*, *:before, *:after {
-  box-sizing: inherit;
+@keyframes inner{
+  from { width: 100%; }
+  to { width: 200%; color: #000;}
 }
 
-body {
-  color: $yellow;
-  background: $violet;
+body, html{
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #f00;
+  padding: 0;
+}
+
+.swipe{
+  position: relative;
+  height: 1em;
+}
+
+.swipe > *{
+  position: absolute;
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  height: 1em;
+  color: #000;
+  background: #fff;
+  white-space: nowrap;
+  float: right;
+  top: 0;
+  margin: 0;
+}
+
+.swipe *:nth-child(1){
+  position: relative;
+  color: #fff;
+  background: #000;
+  animation: outer 5s forwards;
+}
+
+.swipe *:nth-child(1) > *{
+  display: block;
+  z-index: 3;
+  width: 100%;
+  float: right;
+  animation: inner 5s forwards;
 }
